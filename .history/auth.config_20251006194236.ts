@@ -1,0 +1,1 @@
+import Github from 'next-auth/p'

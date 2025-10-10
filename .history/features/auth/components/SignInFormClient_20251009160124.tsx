@@ -1,0 +1,28 @@
+import React from 'react'
+import { Button } from '@/components/ui/button'
+import {
+    Card,
+    CardContent,
+    CardFooter,
+    CardDescription,
+    CardHeader,
+    CardTitle
+} from '@/components/ui/card'
+import { Chrome, Github } from 'lucide-react'
+
+const SignInFormClient = () => {
+  return (
+    <Card className='w-full max-w-md '>
+        <CardHeader className='space-y-1' >
+            <CardTitle className='text-2xl font-bold text-center'>Sign In</CardTitle>
+            <CardDescription className='text-center'>
+                Choose Your Preferred Sign-in Method
+            </CardDescription>
+        </CardHeader>
+
+        <CardContent className='grid ga'></CardContent>
+    </Card>
+  )
+}
+
+export default SignInFormClient
