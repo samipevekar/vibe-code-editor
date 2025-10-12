@@ -32,10 +32,13 @@ const UserButton = () => {
       </DropdownMenuTrigger>
 
     <DropdownMenuContent className="mr-4">
-      <DropdownMenuItem>
+      <DropdownMenuItem >
         <span>
           {user?.email}
         </span>
+        {/* <span>
+          {user?.name}
+        </span> */}
       </DropdownMenuItem>
       <DropdownMenuSeparator/>
         <LogoutButton>
