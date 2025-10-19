@@ -1,4 +1,3 @@
-
 generator client {
   provider = "prisma-client-js"
   output   = "../lib/generated/prisma"
@@ -16,14 +15,19 @@ enum UserRole {
 }
 
 model User {
-  id String @id @default(cuid()) @map("_id")
-  name String?
-  email String @unique
+  id    String  @id @default(cuid()) @map("_id")
+  name  String?
+  email String  @unique
   image String?
-  accounts Account[]
-  role UserRole @default(USER)
-  createdAt DateTime @default(now())
-  updatedAt DateTime @updatedAt
+
+  myplayground Playground[]
+
+  staredPlaygrounds StartMark[]
+
+  accounts  Account[]
+  role      UserRole  @default(USER)
+  createdAt DateTime  @default(now())
+  updatedAt DateTime  @updatedAt
 }
 
 model Account {
@@ -44,4 +48,43 @@ model Account {
 
   @@unique([provider, providerAccountId])
   @@index([userId])
+}
+
+enum Templates {
+  REACT
+  VUE
+  EXPRESS
+  HONO
+  ANGULAR
+  NEXTJS
+}
+
+model Playground {
+  id          String      @id @default(cuid()) @map("_id")
+  title       String
+  description String
+  template    Templates   @default(REACT)
+  Startmark   StartMark[]
+  userId      String
+  user        User        @relation(fields: [userId], references: [id], onDelete: Cascade)
+
+  // todo: add here templateFiles as well
+
+  createdAt DateTime @default(now())
+  updatedAt DateTime @updatedAt
+}
+
+model StartMark {
+  id           String @id @default(cuid()) @map("_id")
+  userId       String
+  playgroundId String @map("playground_id")
+  isMarked     String
+
+  createdAt DateTime @default(now())
+  updatedAt DateTime @updatedAt
+
+  user       User       @relation(fields: [userId], references: [id], onDelete: Cascade)
+  playground Playground @relation(fields: [playgroundId], references: [id], onDelete: Cascade)
+
+  @@unique([userId, playgroundId])
 }
