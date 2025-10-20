@@ -168,12 +168,12 @@ export default function ProjectTable({
                       </Button>
                     </DropdownMenuTrigger>
                     <DropdownMenuContent align="end" className="w-48">
-                      <DropdownMenuItem asChild>
+                      {/* <DropdownMenuItem asChild>
                         <MarkedToggleButton
                           markedForRevision={project.Starmark[0]?.isMarked}
                           id={project.id}
                         />
-                      </DropdownMenuItem>
+                      </DropdownMenuItem> */}
                       <DropdownMenuItem asChild>
                         <Link
                           href={`/playground/${project.id}`}
